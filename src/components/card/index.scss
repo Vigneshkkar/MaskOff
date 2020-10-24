@@ -2,6 +2,7 @@
 .cardContainer {
   box-shadow: $inset-shadow;
   width: fit-content;
+  background-color: $primary-color;
 }
 .circle {
   border-radius: 50%;

@@ -43,6 +43,9 @@
   line-height: 61px;
   color: #ffffff;
   margin: 2rem;
+  &:focus {
+    outline: none;
+  }
 }
 .yesButton {
   @include button();
@@ -55,5 +58,14 @@
 .cannbisLeaf {
   transform: translate(-44px, -142px);
   position: absolute;
+  z-index: -1;
+}
+
+.canvas {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
   z-index: -1;
 }
