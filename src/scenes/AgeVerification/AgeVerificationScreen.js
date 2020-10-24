@@ -5,37 +5,15 @@ import "./index.scss";
 import Logo from "../../assets/logo.svg";
 import Leaf from "../../assets/cannbisLeaf.svg";
 import Card from "../../components/card";
-import SmokeMachine from "@bijection/smoke";
+
 import useDimensions from "../../util/customHooks/useDimensions";
+import SmokeRender from "../../util/smokeRenderer";
 
 const AgeVerification = ({onCancel,onConfirm}) => {
   const smoke = useRef(null);
   let { height, width } = useDimensions();
   useEffect(() => {
-
-    var canvas = smoke.current;
-    var ctx = canvas.getContext("2d");
-    canvas.width = width;
-    canvas.height = height;
-
-    var party = SmokeMachine(ctx, [255, 255, 255]);
-    const setHeight = height + 100;
-    party.start(); 
-    let i=0;
-    
-        setInterval(() => {
-            for(var i=0; i<10; i++){            
-                party.addSmoke((width/10)*i , setHeight, Math.random()*10);
-            }
-        }, 1000);
-
-    onmousemove = function (e) {
-      var x = e.clientX;
-      var y = e.clientY;
-      var n = 2.5;
-      var t = Math.floor(Math.random() * 200) + 3800;
-      party.addsmoke(x, y, n, t);
-    };
+    onmousemove = SmokeRender(smoke, height, width);
   }, [height, width] );
   return (
     <>

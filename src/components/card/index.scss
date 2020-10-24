@@ -1,8 +1,16 @@
 @import "../../styles/theme.scss";
-.cardContainer {
-  box-shadow: $inset-shadow;
-  width: fit-content;
+@mixin container {
   background-color: $primary-color;
+  width: fit-content;
+  border-radius: 10px;
+}
+.cardContainerInset {
+  @include container();
+  box-shadow: $inset-shadow;
+}
+.cardContainer {
+  @include container();
+  box-shadow: $outSetShadow;
 }
 .circle {
   border-radius: 50%;
