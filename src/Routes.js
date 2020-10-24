@@ -1,5 +1,5 @@
-import Age from './AgeVerification';
-import Home from "./Home";
+import Age from './scenes/AgeVerification';
+import Home from "./scenes/Home";
 
 const routes = [
     {

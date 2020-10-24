@@ -1,0 +1,8 @@
+@import "../../styles/theme.scss";
+.cardContainer {
+  box-shadow: $inset-shadow;
+  width: fit-content;
+}
+.circle {
+  border-radius: 50%;
+}

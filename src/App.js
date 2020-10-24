@@ -1,12 +1,11 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import routes from './Routes'
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 const App = () => {

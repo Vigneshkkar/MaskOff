@@ -1,0 +1,59 @@
+@import "../../styles/theme.scss";
+
+.logosize {
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+}
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 80vh;
+}
+@mixin font {
+  font-style: normal;
+  font-weight: normal;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.32);
+  color: $font-white;
+}
+.title {
+  @include font();
+  font-size: 49px;
+  line-height: 75px;
+}
+.sub-title {
+  @include font();
+  font-size: 22px;
+  line-height: 34px;
+}
+.redHigllignt {
+  color: $red;
+}
+@mixin button {
+  box-shadow: 10px 10px 30px #0c1922, -10px -10px 30px #1f3646;
+  border-radius: 43px;
+  border: none;
+  height: 4rem;
+  width: 8rem;
+  font-family: "Baloo Thambi 2";
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 61px;
+  color: #ffffff;
+  margin: 2rem;
+}
+.yesButton {
+  @include button();
+  background: $light-green;
+}
+.noButton {
+  @include button();
+  background: $primary-color;
+}
+.cannbisLeaf {
+  transform: translate(-44px, -142px);
+  position: absolute;
+  z-index: -1;
+}

@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Baloo+Thambi+2");
+@import "./styles/theme.scss";
+
+body {
+  margin: 0;
+  font-family: $font-stack;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $primary-color;
+}
