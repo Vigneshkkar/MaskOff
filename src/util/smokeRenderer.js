@@ -9,7 +9,6 @@ const renderSmoke = (SmokeCanvas, height, width, smokeStrength) => {
     var party = SmokeMachine(ctx, [255, 255, 255]);
     const setHeight = height + 100;
     party.start(); 
-    let i=0;
     
         setInterval(() => {
             for(var i=0; i<10; i++){            

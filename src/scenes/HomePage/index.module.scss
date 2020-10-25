@@ -1,0 +1,14 @@
+@import "../../styles/theme.scss";
+
+.quoteContainer {
+  margin: 3rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  span {
+    color: $textColor;
+    font-weight: bold;
+    font-size: x-large;
+  }
+}

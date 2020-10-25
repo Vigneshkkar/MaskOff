@@ -19,7 +19,7 @@ const AgeVerification = ({onCancel,onConfirm}) => {
     <>
       <div className="container">
         <Card circle={true}>
-          <img className="logosize" src={Logo} />
+          <img alt="" className="logosize" src={Logo} />
         </Card>
         <span className="title">Age Verification</span>
         <div>
@@ -30,7 +30,7 @@ const AgeVerification = ({onCancel,onConfirm}) => {
         <div>
           <button onClick={onConfirm} className="yesButton">Yes</button>
           <button onClick={onCancel} className="noButton">No</button>
-          <img className="cannbisLeaf" src={Leaf} />
+          <img alt="" className="cannbisLeaf" src={Leaf} />
         </div>
       </div>
       <canvas

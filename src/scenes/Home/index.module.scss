@@ -4,6 +4,7 @@
   position: fixed;
   top: -15px;
   left: -30px;
+  z-index: -1;
 }
 .holder {
   box-shadow: 26px 20px 30px rgba(0, 0, 0, 0.25);
@@ -12,10 +13,40 @@
   position: fixed;
   left: 423px;
   background: $primary-color;
+  z-index: -1;
 }
 .logo {
   position: fixed;
   width: 12rem;
   height: 10rem;
   left: 2px;
+}
+.iconContainer {
+  display: flex;
+  justify-content: flex-end;
+  height: 85px;
+  align-items: center;
+  padding-right: 2.5rem;
+}
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  transform: scale(1);
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.5s;
+
+  &:hover {
+    transform: scale(1.25);
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.5s;
+  }
+}
+.iconText {
+  color: #ffff;
+  font-size: 1rem;
+  z-index: 9;
 }

@@ -1,12 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import PropTypes from 'prop-types';
 import styles from "./index.module.scss";
 import Card from "../../components/card";
 import useDimensions from "../../util/customHooks/useDimensions";
 import NoAuthsvg from "../../assets/noAuthImage.svg";
 import SmokeRender from "../../util/smokeRenderer";
 
-const NoAuth = ({}) => {
+const NoAuth = () => {
   console.log(styles);
   const smoke = useRef(null);
   let { height, width } = useDimensions();
@@ -19,7 +18,7 @@ const NoAuth = ({}) => {
         <Card>
           <span className={styles.title}>Sorry, You are not old enough to view this site.</span>
         </Card>
-          <img className={styles.noAuthImg} src={NoAuthsvg}></img>
+          <img alt="" className={styles.noAuthImg} src={NoAuthsvg}></img>
       </div>
       <canvas
         onMouseOver={onmousemove}

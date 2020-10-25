@@ -21,7 +21,7 @@ const AgeVerification = () => {
     useEffect(() => {
             if(cookies.ageVerify)
             onConfirm(history, setCookie);
-    }, []);
+    });
     return <AgeScreen onConfirm={() => onConfirm(history, setCookie)}  onCancel={() => onCancel(history, setCookie)} />
 }
 
