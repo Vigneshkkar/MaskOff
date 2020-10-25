@@ -1,5 +1,8 @@
 import React from 'react';
+import HomeScreen from "./HomeScreen";
 
-const Home = () => <div>Home</div>
+const Home = () => {
+    return <HomeScreen />
+}
 
 export default Home;
