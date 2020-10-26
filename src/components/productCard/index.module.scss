@@ -1,0 +1,105 @@
+@import '../../styles/theme.scss';
+.cardHolder {
+  margin-top: 5rem;
+  width: 300px;
+
+  @include AnimationDurations(1s);
+  &:hover {
+    width: 450px;
+    .cardPicker {
+      height: 400px;
+    }
+    // height: 600px;
+    .expandedCont {
+      // font-size: $catSubFont;
+      //   transform: scale(1);
+      opacity: 1;
+      transition-delay: 0.5s;
+    }
+    .addCartCont {
+      opacity: 1;
+      transition-delay: 0.5s;
+    }
+  }
+}
+.expandedCont {
+  @include AnimationDurations(1s);
+  //   transform: scale(0);
+  font-size: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: $catSubFont;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.imageCont {
+  display: flex;
+  justify-content: center;
+  //   transform: translateY(-2.5rem);
+  position: absolute;
+  top: -3.5rem;
+  right: 1rem;
+}
+.cardPicker {
+  @include AnimationDurations(1s);
+  transition-delay: 0.5s;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  //   justify-content: center;
+  padding-top: 6rem;
+  padding-bottom: 2rem;
+  align-items: center;
+  //   height: 300px;
+  position: relative;
+}
+.padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  //   font-size: $catSubFont;
+  color: $light-green;
+  font-weight: bold;
+}
+.title {
+  font-size: $cardHeading;
+  color: $textColor;
+  font-weight: bold;
+}
+.subTitle {
+  font-size: $catSubFont;
+  color: $light-green;
+  font-weight: bold;
+}
+.addCartCont {
+  @include AnimationDurations(1s);
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem;
+  align-items: center;
+  opacity: 0;
+  overflow: hidden;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+.ButtonCont {
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  transform: scale(1);
+  span {
+    color: $textColor;
+  }
+}
+
+.addCartAnimate {
+  @include AnimationDurations(1s);
+  &:hover {
+    transform: scale(1.25);
+  }
+}

@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react';
-import CartScreen from "./CartScreen";
+import React from 'react';
+import CartScreen from './CartScreen';
 
 const Cart = () => {
-    console.log("Loaded Homepage")
-  
-    return <CartScreen />
-}
-
+  return <CartScreen />;
+};
 
 export default Cart;

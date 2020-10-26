@@ -1,20 +1,24 @@
-import React, { useEffect, useRef } from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import styles from "./index.module.scss";
-import Grid from '@material-ui/core/Grid';
+import styles from './index.module.scss';
+import Header from '../../../components/Header';
 
-const MainContentScreen = () => {
- 
+import ProdCard from '../../../components/productCard';
+
+const MainContentScreen = ({ products, loading }) => {
   return (
-    
+    <div className={styles.holder}>
+      <Header />
       <div>
-    main Contrnt
+        <ProdCard />
       </div>
+    </div>
   );
 };
 
 MainContentScreen.propTypes = {
-  
-}
+  products: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+};
 
 export default MainContentScreen;

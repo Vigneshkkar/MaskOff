@@ -1,0 +1,16 @@
+@mixin AnimationDurations($duration) {
+  transition-duration: $duration;
+  transition-timing-function: ease-in-out;
+  &:hover {
+    transition-duration: $duration;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+@mixin hoverAnimation {
+  @include AnimationDurations(0.5s);
+  transform: scale(1);
+  &:hover {
+    transform: scale(1.25);
+  }
+}

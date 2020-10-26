@@ -1,7 +1,7 @@
-@import "../../styles/theme.scss";
+@import '../../styles/theme.scss';
 @mixin container {
   background-color: $primary-color;
-  width: fit-content;
+  // width: fit-content;
   border-radius: 10px;
 }
 .cardContainerInset {
@@ -14,4 +14,7 @@
 }
 .circle {
   border-radius: 50%;
+}
+.buttonCard {
+  border-radius: 100rem;
 }

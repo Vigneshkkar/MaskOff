@@ -1,0 +1,16 @@
+@import '../../styles/theme.scss';
+
+.cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem;
+  span {
+    color: $textColor;
+    font-size: $xLargeFont;
+    text-align: center;
+  }
+}
+.rot180 {
+  transform: rotate(180deg);
+}

@@ -10,7 +10,12 @@ const theme = createMuiTheme({
       secondary:{
           main: '#4D7756'
       }
-    }
+    },
+    typography: {
+      fontFamily: [
+        "Baloo Thambi 2", "Segoe UI", "Roboto", "Oxygen", "Ubuntu"
+      ].join(','),
+    },
   });
 
 const Home = () => {

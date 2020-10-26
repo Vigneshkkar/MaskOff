@@ -1,0 +1,19 @@
+@import '../../styles/theme.scss';
+.seacrhComp {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+.inputtransparent {
+  background: none;
+  border: none;
+  margin: 0.5rem;
+  color: $textColor;
+  width: -webkit-fill-available;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: $textSutle;
+  }
+}

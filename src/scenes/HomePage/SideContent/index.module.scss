@@ -9,8 +9,31 @@
     font-size: $largeFont;
     color: $light-green;
     font-weight: bold;
+    cursor: default;
   }
 }
 .holder {
   margin: 1rem;
+}
+.spinner {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sliderCont {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding-bottom: 1rem;
+}
+@mixin font {
+  color: $secondary-color;
+  padding-bottom: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.subCat {
+  @include font();
+  font-size: $catSubFont;
+  // padding-left: 1rem;
 }

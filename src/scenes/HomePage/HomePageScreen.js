@@ -1,32 +1,33 @@
-import React, { useEffect, useRef } from "react";
-import PropTypes from 'prop-types';
-import styles from "./index.module.scss";
-import Grid from '@material-ui/core/Grid';
-import SideContent from "./SideContent";
-import MainContent from "./MainContent";
+import React from 'react';
+// import PropTypes from 'prop-types';
+import styles from './index.module.scss';
+import SideContent from './SideContent';
+import MainContent from './MainContent';
 
 const HomePageScreen = () => {
- 
   return (
-    
-      <div>
+    <div>
       <div className={styles.quoteContainer}>
         <span>“Struggle is the enemy, but weed is the remedy.”</span>
       </div>
-      <Grid container justify="center" >
-        <Grid item xs={4}>
-         <SideContent />
-        </Grid>
-        <Grid item xs={8}>
+      <div className={styles.pageCont}>
+        <div className={styles.sideCont}>
+          <SideContent />
+        </div>
+        <div className={styles.MainContent}>
           <MainContent />
-        </Grid>
-      </Grid>
+        </div>
       </div>
+      {/* <Grid container justify="center" >
+        <Grid item xs={4}> */}
+      {/* </Grid> */}
+      {/* <Grid item xs={8}> */}
+      {/* </Grid> */}
+      {/* </Grid> */}
+    </div>
   );
 };
 
-HomePageScreen.propTypes = {
-  
-}
+HomePageScreen.propTypes = {};
 
 export default HomePageScreen;

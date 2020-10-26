@@ -1,0 +1,37 @@
+@import '../../styles/theme.scss';
+.Header {
+  margin-left: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin font {
+  color: $secondary-color;
+  font-weight: bold;
+  cursor: pointer;
+}
+.HeaderText {
+  @include font();
+  font-size: $categoryHeading;
+}
+.subCat {
+  @include font();
+  @include hoverAnimation();
+  font-size: $catSubFont;
+  padding-left: 4rem;
+  padding-bottom: 0.5rem;
+}
+.titileCont {
+  @include hoverAnimation();
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5rem;
+
+  img {
+    margin-right: 0.5rem;
+  }
+  &:hover {
+    margin-left: 2rem;
+  }
+}

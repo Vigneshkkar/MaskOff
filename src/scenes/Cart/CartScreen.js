@@ -1,20 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import PropTypes from 'prop-types';
-import "./index.scss";
+import React from 'react';
+// import PropTypes from 'prop-types';
+import './index.scss';
 
 const CartScreen = () => {
- 
   return (
     <>
-      <div>
-        Cart
-      </div>
+      <div>Cart</div>
     </>
   );
 };
 
-CartScreen.propTypes = {
-  
-}
+CartScreen.propTypes = {};
 
 export default CartScreen;
