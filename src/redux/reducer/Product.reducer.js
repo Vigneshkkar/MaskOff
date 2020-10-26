@@ -1,7 +1,7 @@
 import { keys } from '../keys';
 const { GET_PRODUCTS, FETCH_PRODUCTS } = keys;
 export const initialState = {
-  data: null,
+  data: [],
   loading: false,
   error: null,
 };
