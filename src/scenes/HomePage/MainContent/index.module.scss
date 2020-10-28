@@ -2,3 +2,26 @@
 .holder {
   margin: 1rem;
 }
+
+.prodContainer {
+  @include custromScrollBar();
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: space-around;
+  height: calc(100vh - 55px - 4rem - 8rem);
+  overflow: auto;
+}
+.NoDataText {
+  display: flex;
+  align-items: center;
+  color: $textColor;
+  font-size: $categoryHeading;
+}
+.Chips {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.additionalSpace {
+  height: calc(100vh - 55px - 4rem - 8rem - 2rem);
+}

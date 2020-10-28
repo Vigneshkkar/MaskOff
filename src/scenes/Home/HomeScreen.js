@@ -5,44 +5,49 @@ import Home from '@material-ui/icons/HomeRounded';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartRounded';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import routes from './HomeRoute';
+import PropTypes from 'prop-types';
 import RouteWithSubRoutes from '../../components/RouteSubRoutes';
 import { useCookies } from 'react-cookie';
 
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import LogoHolder from '../../assets/header.svg';
 import Logo from '../../assets/logo.svg';
 
-const HomeScreen = () => {
+const HomeScreen = ({ cartValue, onNavigate }) => {
   const [cookies] = useCookies();
   return (
     <>
+      <img alt='' className={styles.logoHolder} src={LogoHolder} />
       <div className={styles.globalHeader}>
-        <img alt='' className={styles.logoHolder} src={LogoHolder} />
         <div className={styles.holder}>
           <img alt='' className={styles.logo} src={Logo} />
         </div>
         <div className={styles.iconContainer}>
+          <Badges onPress={() => onNavigate('/')} Icon={Home} label='Home' />
           <Badges
-            onPress={() => console.log('Home')}
-            Icon={Home}
-            label='Home'
+            badgeContent={cartValue}
+            Icon={ShoppingCartIcon}
+            label='Cart'
+            onPress={() => onNavigate('/Cart')}
           />
-          <Badges badgeContent={3} Icon={ShoppingCartIcon} label='Cart' />
           <Badges Icon={AccountCircle} label='Login' />
         </div>
       </div>
       <div className={styles.globalCont}>
-        <Router>
-          <Switch>
-            {routes.map((route, i) => (
-              <RouteWithSubRoutes cookies={cookies} key={i} {...route} />
-            ))}
-          </Switch>
-        </Router>
+        <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes cookies={cookies} key={i} {...route} />
+          ))}
+        </Switch>
       </div>
     </>
   );
+};
+
+HomeScreen.propTypes = {
+  cartValue: PropTypes.number.isRequired,
+  onNavigate: PropTypes.func.isRequired,
 };
 
 export default HomeScreen;

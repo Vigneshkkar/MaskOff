@@ -1,0 +1,12 @@
+@import '../../styles/theme.scss';
+
+.cartTitle {
+  font-size: $cardHeading;
+  color: $textColor;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  font-weight: bold;
+}

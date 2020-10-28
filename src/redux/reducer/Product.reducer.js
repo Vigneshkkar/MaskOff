@@ -1,7 +1,10 @@
 import { keys } from '../keys';
-const { GET_PRODUCTS, FETCH_PRODUCTS } = keys;
+const { GET_PRODUCTS, FETCH_PRODUCTS, UPDATE_SEARCH, UPDATE_SORTBY } = keys;
 export const initialState = {
+  searchValue: '',
+  sortValue: { name: 'Name', asc: true },
   data: [],
+
   loading: false,
   error: null,
 };
@@ -20,6 +23,17 @@ const ProductReducer = (state = initialState, action) => {
         loading: false,
         error: null,
       };
+    case UPDATE_SEARCH:
+      return {
+        ...state,
+        searchValue: action.payload,
+      };
+    case UPDATE_SORTBY:
+      return {
+        ...state,
+        sortValue: action.payload,
+      };
+
     default:
       return state;
   }

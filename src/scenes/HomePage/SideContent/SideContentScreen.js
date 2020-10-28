@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './index.module.scss';
 import Card from '../../../components/card';
 import { CircularProgress, Slider } from '@material-ui/core';
 
 import Categories from '../../../components/categories';
 
-const SideContentScreen = ({ cats, loading }) => {
+const SideContentScreen = ({ cats, loading, onCatSelect }) => {
   const [value, setValue] = useState([20, 40]);
   return (
     <div className={styles.holder}>
@@ -20,7 +20,7 @@ const SideContentScreen = ({ cats, loading }) => {
               <CircularProgress />
             </div>
           ) : (
-            cats && <Categories cats={cats} />
+            cats && <Categories onSelect={onCatSelect} cats={cats} />
           )}
         </div>
         {!loading && (
@@ -46,6 +46,8 @@ const SideContentScreen = ({ cats, loading }) => {
   );
 };
 
-SideContentScreen.propTypes = {};
+SideContentScreen.propTypes = {
+  onCatSelect: PropTypes.func.isRequired,
+};
 
 export default SideContentScreen;

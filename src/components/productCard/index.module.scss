@@ -2,12 +2,14 @@
 .cardHolder {
   margin-top: 5rem;
   width: 300px;
+  // position: relative;
 
   @include AnimationDurations(1s);
   &:hover {
     width: 450px;
     .cardPicker {
       height: 400px;
+      // position: absolute;
     }
     // height: 600px;
     .expandedCont {

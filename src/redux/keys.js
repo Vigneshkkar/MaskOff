@@ -11,4 +11,12 @@ export const keys = keyMirror({
 
   GET_PRODUCTS: null,
   FETCH_PRODUCTS: null,
+  UPDATE_SEARCH: null,
+  UPDATE_SORTBY: null,
+  UPDATE_SEL_CATS: null,
+  DELETE_SEL_CATS: null,
+
+  ADD_CART: null,
+  DELETE_CART: null,
+  RESET_CART: null,
 });
