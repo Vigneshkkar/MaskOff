@@ -1,15 +1,17 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import MainContentScreen from './MainContentScreen';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from '../../../redux/actions/Product.actions';
 import * as CatActions from '../../../redux/actions/Category.actions';
+import { setAppCookies } from '../../../util/cookieHandler';
 
 import { getFilteredSorted } from '../../../redux/selections/Product.selections';
 import { useCookies } from 'react-cookie';
 
 const MainContent = (props) => {
   const [cookies, setCookie] = useCookies();
+  const [open, setOpen] = useState(false);
   const onSearch = useCallback(
     (value) => {
       props.actions.updateSearch(value);
@@ -24,20 +26,13 @@ const MainContent = (props) => {
   );
   const onAddCart = useCallback(
     (count, obj) => {
-      const year = new Date().getFullYear() + 1;
-      const oneYear = new Date().setFullYear(year);
-      let cartValue = [];
-      if (cookies.Cart) {
-        cartValue = JSON.parse(decodeURI(cookies.Cart));
-        cartValue = cartValue.filter((o) => o.n !== obj.Name);
-      }
-      cartValue.push({ q: count, n: obj.Name });
-      setCookie('Cart', encodeURI(JSON.stringify(cartValue)), {
-        path: '/',
-        expires: new Date(oneYear),
-      });
+      setAppCookies(count, obj, cookies, setCookie);
+      setOpen(true);
+      setTimeout(() => {
+        setOpen(false);
+      }, 2000);
     },
-    [setCookie, cookies.Cart]
+    [setCookie, cookies.Cart, setOpen]
   );
 
   const onSort = useCallback(
@@ -74,6 +69,7 @@ const MainContent = (props) => {
       onSort={onSort}
       selectedCats={props.selCats}
       onDeleteCat={onDeleteChip}
+      showToast={open}
     />
   );
 };

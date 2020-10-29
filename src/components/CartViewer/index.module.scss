@@ -1,0 +1,38 @@
+@import '../../styles/theme.scss';
+
+.cartViewHolder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+@mixin fonts {
+  font-size: $cardHeading;
+  text-shadow: 0px 3px 5px #000000;
+  margin-right: 1rem;
+}
+.ProdName {
+  @include fonts();
+  color: $light-green;
+  width: 20rem;
+  overflow-wrap: anywhere;
+}
+.Price {
+  @include fonts();
+  color: $textColor;
+}
+.counter {
+  transform: scale(0.75);
+}
+.PriceTot {
+  @include fonts();
+  color: $light-green;
+}
+
+.Delete {
+  @include AnimationDurations(0.5s);
+  &:hover {
+    transform: scale(1.25);
+  }
+}

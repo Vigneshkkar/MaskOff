@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './index.module.scss';
 import Header from '../../../components/Header';
 import Chips from '../../../components/ChipsBuilder';
+import Toast from '../../../components/Toast';
 
 import Skeleton from '@material-ui/lab/Skeleton';
 
@@ -24,34 +25,44 @@ const MainContentScreen = ({
   onSort,
   selectedCats,
   onDeleteCat,
+  showToast,
+  onCloseToast,
 }) => {
   return (
-    <div className={styles.holder}>
-      <Header onSearch={onSearch} onSort={onSort} />
-      {selectedCats && (
-        <div className={styles.Chips}>
-          <Chips onDelete={onDeleteCat} data={selectedCats} />{' '}
+    <>
+      <div className={styles.holder}>
+        <Header onSearch={onSearch} onSort={onSort} />
+        {selectedCats && (
+          <div className={styles.Chips}>
+            <Chips onDelete={onDeleteCat} data={selectedCats} />{' '}
+          </div>
+        )}
+        <div
+          className={[
+            styles.prodContainer,
+            selectedCats.length > 0 ? styles.additionalSpace : '',
+          ].join(' ')}>
+          {!loading
+            ? products &&
+              products.length > 0 &&
+              products.map((o, i) => (
+                <ProdCard key={i} onAddCart={onAddCart} productObj={o} />
+              ))
+            : Array.from(Array(16).keys()).map((o, i) => (
+                <Skeleton animation='wave' key={i}>
+                  <ProdCard />
+                </Skeleton>
+              ))}
+          {!loading && products && products.length === 0 && <NoData />}
         </div>
-      )}
-      <div
-        className={[
-          styles.prodContainer,
-          selectedCats.length > 0 ? styles.additionalSpace : '',
-        ].join(' ')}>
-        {!loading
-          ? products &&
-            products.length > 0 &&
-            products.map((o, i) => (
-              <ProdCard key={i} onAddCart={onAddCart} productObj={o} />
-            ))
-          : Array.from(Array(16).keys()).map((o, i) => (
-              <Skeleton animation='wave' key={i}>
-                <ProdCard />
-              </Skeleton>
-            ))}
-        {!loading && products && products.length === 0 && <NoData />}
       </div>
-    </div>
+      <Toast
+        handleClose={onCloseToast}
+        msg='Product Added to Cart Successfully'
+        type='success'
+        open={showToast}
+      />
+    </>
   );
 };
 
@@ -63,6 +74,8 @@ MainContentScreen.propTypes = {
   onSort: PropTypes.func.isRequired,
   selectedCats: PropTypes.array.isRequired,
   onDeleteCat: PropTypes.func.isRequired,
+  showToast: PropTypes.bool.isRequired,
+  onCloseToast: PropTypes.func,
 };
 
 export default MainContentScreen;

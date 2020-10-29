@@ -8,13 +8,14 @@ import routes from './HomeRoute';
 import PropTypes from 'prop-types';
 import RouteWithSubRoutes from '../../components/RouteSubRoutes';
 import { useCookies } from 'react-cookie';
+import Login from '../../components/Login';
 
 import { Switch } from 'react-router-dom';
 
 import LogoHolder from '../../assets/header.svg';
 import Logo from '../../assets/logo.svg';
 
-const HomeScreen = ({ cartValue, onNavigate }) => {
+const HomeScreen = ({ cartValue, onNavigate, open, onClose, onOpenLogin }) => {
   const [cookies] = useCookies();
   return (
     <>
@@ -31,7 +32,7 @@ const HomeScreen = ({ cartValue, onNavigate }) => {
             label='Cart'
             onPress={() => onNavigate('/Cart')}
           />
-          <Badges Icon={AccountCircle} label='Login' />
+          <Badges onPress={onOpenLogin} Icon={AccountCircle} label='Login' />
         </div>
       </div>
       <div className={styles.globalCont}>
@@ -41,6 +42,7 @@ const HomeScreen = ({ cartValue, onNavigate }) => {
           ))}
         </Switch>
       </div>
+      <Login open={open} handleClose={onClose} />
     </>
   );
 };
@@ -48,6 +50,9 @@ const HomeScreen = ({ cartValue, onNavigate }) => {
 HomeScreen.propTypes = {
   cartValue: PropTypes.number.isRequired,
   onNavigate: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onOpenLogin: PropTypes.func.isRequired,
 };
 
 export default HomeScreen;

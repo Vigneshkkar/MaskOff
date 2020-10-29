@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import SideContentScreen from './SideContentScreen';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

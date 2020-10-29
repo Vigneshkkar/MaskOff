@@ -1,0 +1,72 @@
+@import '../../styles/theme.scss';
+
+.loginContainer {
+  width: 50%;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-items: center;
+  & > * {
+    margin-bottom: 1.25rem;
+  }
+}
+
+@mixin font {
+  color: $primary-color;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Heading {
+  @include font();
+  font-size: $categoryHeading;
+}
+.btnText {
+  @include font();
+  @include AnimationDurations(1s);
+  &:hover {
+    transform: scale(1.25);
+  }
+  font-size: $catSubFont;
+  margin: 0.5rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+.forgotPass {
+  @include AnimationDurations(1s);
+  span {
+    &:hover {
+      transform: scale(1.25);
+    }
+  }
+  @include font();
+  font-weight: normal;
+  font-size: $catSubFont;
+}
+.seacrhComp {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+.inputtransparent {
+  background: none;
+  border: none;
+  margin: 0.5rem;
+  color: $textColor;
+  width: -webkit-fill-available;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: $textSutle;
+  }
+}
+
+.cardOverride {
+  background-color: $light-backGround;
+  box-shadow: $light-shadow;
+}
+.fillWidth {
+  width: -webkit-fill-available;
+}

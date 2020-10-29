@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import HomeScreen from './HomeScreen';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
@@ -33,6 +33,9 @@ const theme = createMuiTheme({
 const Home = (props) => {
   const [cookies] = useCookies();
   const history = useHistory();
+  const [open, setOpen] = useState(false);
+  const onClose = () => setOpen(false);
+  const onOpenLogin = () => setOpen(true);
   useEffect(() => {
     props.actions.getProductDetails();
   }, []);
@@ -53,7 +56,13 @@ const Home = (props) => {
   );
   return (
     <MuiThemeProvider theme={theme}>
-      <HomeScreen onNavigate={onNavigate} cartValue={props.cartValue} />
+      <HomeScreen
+        open={open}
+        onClose={onClose}
+        onNavigate={onNavigate}
+        onOpenLogin={onOpenLogin}
+        cartValue={props.cartValue}
+      />
     </MuiThemeProvider>
   );
 };
