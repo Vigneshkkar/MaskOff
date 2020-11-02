@@ -15,6 +15,15 @@ import { setAppCookies, setAppCookiesDirect } from '../../util/cookieHandler';
 const Cart = (props) => {
   const [cookies, setCookie] = useCookies();
   const [open, setOpen] = useState(false);
+
+  const [openLogin, setOpenLogin] = useState(false);
+  const onClose = () => setOpenLogin(false);
+  const onOpenLogin = () => setOpenLogin(true);
+
+  const onCheckOpenLogin = () => {
+    onOpenLogin();
+  };
+
   const onChangeCount = useCallback(
     (count, obj) => setAppCookies(count, { Name: obj }, cookies, setCookie),
     [setCookie, cookies]
@@ -42,6 +51,10 @@ const Cart = (props) => {
       count={props.count}
       totalAmount={props.totalAmount}
       showToast={open}
+      open={openLogin}
+      onClose={onClose}
+      onOpenLogin={onOpenLogin}
+      onCheckOpenLogin={onCheckOpenLogin}
     />
   );
 };

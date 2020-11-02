@@ -12,11 +12,11 @@ const validateEmail = (email) => {
   return re.test(String(email).toLowerCase());
 };
 
-const Login = ({
+const Register = ({
   open,
   handleClose,
-  onLogin,
-  onOpenReg,
+  onRegister,
+  onOpenLogin,
   TransitionComponent,
   onOpenFP,
 }) => {
@@ -28,17 +28,17 @@ const Login = ({
     <Dialog
       fullWidth={true}
       open={open}
-      TransitionComponent={TransitionComponent}
       onClose={handleClose}
+      TransitionComponent={TransitionComponent}
       PaperProps={{
         style: {
           backgroundColor: '#F0F0F3',
         },
       }}>
-      <div className={styles.imageHolder}>
-        {/* <div> */}
+      {/* <div> */}
+      <div className={styles.RegisterimageHolder}>
         <div className={styles.loginContainer}>
-          <span className={styles.Heading}>Login</span>
+          <span className={styles.Heading}>Register</span>
           <Card otherStyles={[styles.cardOverride, styles.fillWidth].join(' ')}>
             <div className={styles.seacrhComp}>
               <input
@@ -98,16 +98,16 @@ const Login = ({
                 return;
               }
 
-              onLogin(email, password);
+              onRegister(email, password);
             }}>
             <Card button={true} otherStyles={styles.cardOverride}>
               <div className={[styles.btnText, styles.btnContent].join(' ')}>
-                Login
+                Register
               </div>
             </Card>
           </div>
           <div className={styles.forgotPass}>
-            <span onClick={onOpenReg}>Register /</span>{' '}
+            <span onClick={onOpenLogin}>Login /</span>{' '}
             <span onClick={onOpenFP}>Forgot Password</span>
           </div>
         </div>
@@ -117,13 +117,13 @@ const Login = ({
   );
 };
 
-Login.propTypes = {
+Register.propTypes = {
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
-  onLogin: PropTypes.func.isRequired,
-  onOpenReg: PropTypes.func.isRequired,
+  onRegister: PropTypes.func.isRequired,
+  onOpenLogin: PropTypes.func.isRequired,
   TransitionComponent: PropTypes.object,
   onOpenFP: PropTypes.func.isRequired,
 };
 
-export default Login;
+export default Register;

@@ -8,6 +8,7 @@ import { TextField } from '@material-ui/core';
 import ShoppingBasketRoundedIcon from '@material-ui/icons/ShoppingBasketRounded';
 import Skeleton from '@material-ui/lab/Skeleton';
 import Toast from '../../components/Toast';
+import Login from '../../components/Login';
 
 const CartScreen = ({
   data,
@@ -17,6 +18,10 @@ const CartScreen = ({
   onDeleteItem,
   totalAmount,
   showToast,
+  open,
+  onOpenLogin,
+  onClose,
+  onCheckOpenLogin,
 }) => {
   return (
     <>
@@ -64,7 +69,7 @@ const CartScreen = ({
             <span>Total</span>
             <span>$ {totalAmount}</span>
           </div>
-          <div>
+          <div onClick={onCheckOpenLogin}>
             <Card button={true} otherStyles={styles.cardContainer}>
               <div className={styles.ButtonCont}>
                 <ShoppingBasketRoundedIcon color='primary' />
@@ -75,6 +80,7 @@ const CartScreen = ({
         </div>
       </div>
       <Toast msg='Product removed from Cart.' type='success' open={showToast} />
+      <Login openLoginSetter={onOpenLogin} open={open} handleClose={onClose} />
     </>
   );
 };
@@ -87,6 +93,10 @@ CartScreen.propTypes = {
   onDeleteItem: PropTypes.func.isRequired,
   totalAmount: PropTypes.number.isRequired,
   showToast: PropTypes.bool.isRequired,
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onOpenLogin: PropTypes.func.isRequired,
+  onCheckOpenLogin: PropTypes.func.isRequired,
 };
 
 export default CartScreen;

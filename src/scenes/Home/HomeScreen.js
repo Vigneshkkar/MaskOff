@@ -42,7 +42,7 @@ const HomeScreen = ({ cartValue, onNavigate, open, onClose, onOpenLogin }) => {
           ))}
         </Switch>
       </div>
-      <Login open={open} handleClose={onClose} />
+      <Login openLoginSetter={onOpenLogin} open={open} handleClose={onClose} />
     </>
   );
 };

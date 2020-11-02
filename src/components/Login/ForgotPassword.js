@@ -12,13 +12,13 @@ const validateEmail = (email) => {
   return re.test(String(email).toLowerCase());
 };
 
-const Login = ({
+const ForgotPassword = ({
   open,
   handleClose,
-  onLogin,
-  onOpenReg,
+  onFP,
+  onOpenLogin,
   TransitionComponent,
-  onOpenFP,
+  onRegister,
 }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,10 +35,10 @@ const Login = ({
           backgroundColor: '#F0F0F3',
         },
       }}>
-      <div className={styles.imageHolder}>
+      <div className={styles.ForgotPass}>
         {/* <div> */}
         <div className={styles.loginContainer}>
-          <span className={styles.Heading}>Login</span>
+          <span className={styles.Heading}>Forgot Password</span>
           <Card otherStyles={[styles.cardOverride, styles.fillWidth].join(' ')}>
             <div className={styles.seacrhComp}>
               <input
@@ -50,21 +50,6 @@ const Login = ({
                   setEmail(e.target.value);
                 }}
                 placeholder='Email Address...'
-                className={styles.inputtransparent}></input>
-            </div>
-          </Card>
-          <Card otherStyles={[styles.cardOverride, styles.fillWidth].join(' ')}>
-            <div className={styles.seacrhComp}>
-              <input
-                type='Password'
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                onKeyUp={(e) => {
-                  setPassword(e.target.value);
-                }}
-                placeholder='Password...'
                 className={styles.inputtransparent}></input>
             </div>
           </Card>
@@ -98,17 +83,17 @@ const Login = ({
                 return;
               }
 
-              onLogin(email, password);
+              onFP(email);
             }}>
             <Card button={true} otherStyles={styles.cardOverride}>
               <div className={[styles.btnText, styles.btnContent].join(' ')}>
-                Login
+                Reset Password
               </div>
             </Card>
           </div>
           <div className={styles.forgotPass}>
-            <span onClick={onOpenReg}>Register /</span>{' '}
-            <span onClick={onOpenFP}>Forgot Password</span>
+            <span onClick={onOpenLogin}>Login /</span>{' '}
+            <span onClick={onRegister}>Register</span>
           </div>
         </div>
         <ShowToast msg={toast.toastMsg} type='error' open={toast.open} />
@@ -117,13 +102,13 @@ const Login = ({
   );
 };
 
-Login.propTypes = {
+ForgotPassword.propTypes = {
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
-  onLogin: PropTypes.func.isRequired,
-  onOpenReg: PropTypes.func.isRequired,
+  onFP: PropTypes.func.isRequired,
+  onOpenLogin: PropTypes.func.isRequired,
   TransitionComponent: PropTypes.object,
-  onOpenFP: PropTypes.func.isRequired,
+  onRegister: PropTypes.func.isRequired,
 };
 
-export default Login;
+export default ForgotPassword;
