@@ -10,9 +10,15 @@ const SideContent = (props) => {
   const onCatSel = useCallback((value) => props.actions.updateSelCats(value), [
     props.actions,
   ]);
+
+  const onPriceRange = useCallback(
+    (value) => props.actions.updatePrice(value),
+    [props.actions]
+  );
   return (
     <SideContentScreen
       onCatSelect={onCatSel}
+      onChangePrice={onPriceRange}
       cats={props.data}
       loading={props.loading}
     />

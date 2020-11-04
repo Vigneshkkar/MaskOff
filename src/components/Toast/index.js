@@ -22,9 +22,9 @@ const ShowToast = ({ handleClose, msg, open, type }) => {
 
 ShowToast.propTypes = {
   handleClose: PropTypes.func,
-  msg: PropTypes.string.isRequired,
-  open: PropTypes.bool.isRequired,
-  type: PropTypes.string.isRequired,
+  msg: PropTypes.string,
+  open: PropTypes.bool,
+  type: PropTypes.string,
 };
 
 export default ShowToast;

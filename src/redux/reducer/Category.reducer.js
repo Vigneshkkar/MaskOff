@@ -1,8 +1,15 @@
 import { keys } from '../keys';
-const { GET_CATEGORY, FETCH_SUCCESS, UPDATE_SEL_CATS, DELETE_SEL_CATS } = keys;
+const {
+  GET_CATEGORY,
+  FETCH_SUCCESS,
+  UPDATE_SEL_CATS,
+  DELETE_SEL_CATS,
+  UPDATE_PRICE_RANGE,
+} = keys;
 export const initialState = {
   data: null,
   selCats: [],
+  selPriceRange: [],
   loading: false,
   error: null,
 };
@@ -30,6 +37,11 @@ const CategoryReducer = (state = initialState, action) => {
       return {
         ...state,
         selCats: state.selCats.filter((o) => o !== action.payload),
+      };
+    case UPDATE_PRICE_RANGE:
+      return {
+        ...state,
+        selPriceRange: action.payload,
       };
     default:
       return state;

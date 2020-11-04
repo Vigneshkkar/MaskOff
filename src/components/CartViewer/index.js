@@ -7,7 +7,6 @@ import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
 import { red } from '@material-ui/core/colors';
 import PropTypes from 'prop-types';
 const CartViewer = ({ cartItem, onDelete, onQuantChange }) => {
-  console.log('cart viewer');
   const [count, setCount] = useState(cartItem.quantity);
   useEffect(() => {
     onQuantChange(count, cartItem.Name);

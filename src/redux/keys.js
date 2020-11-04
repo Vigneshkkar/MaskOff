@@ -15,6 +15,7 @@ export const keys = keyMirror({
   UPDATE_SORTBY: null,
   UPDATE_SEL_CATS: null,
   DELETE_SEL_CATS: null,
+  UPDATE_PRICE_RANGE: null,
 
   ADD_CART: null,
   DELETE_CART: null,

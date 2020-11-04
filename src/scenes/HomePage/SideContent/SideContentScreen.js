@@ -6,7 +6,7 @@ import { CircularProgress, Slider } from '@material-ui/core';
 
 import Categories from '../../../components/categories';
 
-const SideContentScreen = ({ cats, loading, onCatSelect }) => {
+const SideContentScreen = ({ cats, loading, onCatSelect, onChangePrice }) => {
   const [value, setValue] = useState([20, 40]);
   return (
     <div className={styles.holder}>
@@ -31,8 +31,13 @@ const SideContentScreen = ({ cats, loading, onCatSelect }) => {
             <div className={styles.sliderCont}>
               <Slider
                 value={value}
-                onChange={(v, i) => setValue(i)}
+                onChange={(v, i) => {
+                  setValue(i);
+                  onChangePrice(i);
+                }}
                 max={1000}
+                valueLabelDisplay='auto'
+                valueLabelFormat={(x) => '$ ' + x}
               />
               <span className={styles.subCat}>
                 Price: ${value[0]} to ${value[1]}
@@ -48,6 +53,7 @@ const SideContentScreen = ({ cats, loading, onCatSelect }) => {
 
 SideContentScreen.propTypes = {
   onCatSelect: PropTypes.func.isRequired,
+  onChangePrice: PropTypes.func.isRequired,
 };
 
 export default SideContentScreen;

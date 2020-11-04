@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.module.scss';
 
@@ -22,7 +22,10 @@ const CartScreen = ({
   onOpenLogin,
   onClose,
   onCheckOpenLogin,
+  ToastType,
+  ToastMsg,
 }) => {
+  const [address, setAddress] = useState('');
   return (
     <>
       <div className={styles.cartTitle}>My Cart</div>
@@ -58,6 +61,8 @@ const CartScreen = ({
             label='Enter Delivery Address...'
             multiline
             size='medium'
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
             fullWidth={true}
             rows={4}
             error={false}
@@ -69,7 +74,7 @@ const CartScreen = ({
             <span>Total</span>
             <span>$ {totalAmount}</span>
           </div>
-          <div onClick={onCheckOpenLogin}>
+          <div onClick={() => onCheckOpenLogin(address)}>
             <Card button={true} otherStyles={styles.cardContainer}>
               <div className={styles.ButtonCont}>
                 <ShoppingBasketRoundedIcon color='primary' />
@@ -79,7 +84,7 @@ const CartScreen = ({
           </div>
         </div>
       </div>
-      <Toast msg='Product removed from Cart.' type='success' open={showToast} />
+      <Toast msg={ToastMsg} type={ToastType} open={showToast} />
       <Login openLoginSetter={onOpenLogin} open={open} handleClose={onClose} />
     </>
   );
@@ -97,6 +102,12 @@ CartScreen.propTypes = {
   onClose: PropTypes.func.isRequired,
   onOpenLogin: PropTypes.func.isRequired,
   onCheckOpenLogin: PropTypes.func.isRequired,
+  ToastType: PropTypes.string,
+  ToastMsg: PropTypes.string,
+};
+CartScreen.defaultProps = {
+  ToastType: 'success',
+  ToastMsg: 'Product removed from Cart.',
 };
 
 export default CartScreen;
