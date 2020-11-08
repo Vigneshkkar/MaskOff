@@ -1,6 +1,10 @@
-export const setAppCookies = (count, obj, cookies, setCookie) => {
+const getTime = () => {
   const year = new Date().getFullYear() + 1;
   const oneYear = new Date().setFullYear(year);
+  return new Date(oneYear);
+};
+
+export const setAppCookies = (count, obj, cookies, setCookie) => {
   let cartValue = [];
   if (cookies.Cart) {
     cartValue = JSON.parse(decodeURI(cookies.Cart));
@@ -9,15 +13,26 @@ export const setAppCookies = (count, obj, cookies, setCookie) => {
   cartValue.push({ q: count, n: obj.Name });
   setCookie('Cart', encodeURI(JSON.stringify(cartValue)), {
     path: '/',
-    expires: new Date(oneYear),
+    expires: getTime(),
   });
 };
 
 export const setAppCookiesDirect = (obj, setCookie) => {
-  const year = new Date().getFullYear() + 1;
-  const oneYear = new Date().setFullYear(year);
   setCookie('Cart', encodeURI(JSON.stringify(obj)), {
     path: '/',
-    expires: new Date(oneYear),
+    expires: getTime(),
+  });
+};
+
+export const setUserLogged = (userEmail, setCookie) => {
+  setCookie('UserEmail', encodeURI(userEmail), {
+    path: '/',
+    expires: getTime(),
+  });
+};
+
+export const clearAllCookies = (removeCookie) => {
+  ['UserEmail', 'Cart', 'ageVerify'].map((o) => {
+    removeCookie(o);
   });
 };

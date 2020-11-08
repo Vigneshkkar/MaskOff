@@ -21,4 +21,15 @@ export const keys = keyMirror({
   ADD_CART: null,
   DELETE_CART: null,
   RESET_CART: null,
+
+  REGISTER_USER: null,
+  REGISTER_SUCC: null,
+  REGISTER_ERR: null,
+  VALIDATE_USER: null,
+  VALIDATE_SUCC: null,
+  VALIDATE_ERR: null,
+  FORGOT_SEND_CODE: null,
+  FORGOT_SEND_SUCC: null,
+  VERIFY_CODE: null,
+  CHANGE_PASSWORD: null,
 });

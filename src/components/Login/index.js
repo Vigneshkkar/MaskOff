@@ -1,31 +1,89 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import InitialLogin from './Login';
 import Register from './Register';
 import ForgotPass from './ForgotPassword';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as Actions from '../../redux/actions/Login.action';
 
 import Slide from '@material-ui/core/Slide';
+import ShowToast from '../Toast';
+import { setUserLogged } from '../../util/cookieHandler';
+import { useCookies } from 'react-cookie';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
 });
 
-const onLogin = (email, password) => {
-  console.log(email, password);
-};
-
-const onRegister = (email, password) => {
-  console.log(email, password);
-};
-
 const onFP = (email, password) => {
   console.log(email, password);
 };
+const openToast = (setToast, msg) => {
+  setToast({
+    open: true,
+    toastMsg: msg,
+  });
+  setTimeout(() => {
+    setToast({
+      open: false,
+      toastMsg: '',
+    });
+  }, 4000);
+};
 
-const Login = ({ open, handleClose, openLoginSetter }) => {
+const Login = (props) => {
+  const [cookies, setCookie] = useCookies();
+
+  console.log(props);
+  const { open, handleClose, openLoginSetter } = props;
   const [openReg, setOpenReg] = useState(false);
   const [openFP, setFP] = useState(false);
+  const [toast, setToast] = useState({ open: false, toastMsg: '' });
 
+  useEffect(() => {
+    if (props.err !== null) {
+      openToast(setToast, props.err);
+    }
+  }, [props.err]);
+  useEffect(() => {
+    if (props.data !== null) {
+      setUserLogged(props.data, setCookie);
+      onCloseRegister();
+      onCloseFP();
+      handleClose();
+    }
+  }, [props.data]);
+
+  const onRegister = useCallback(
+    (email, password) => {
+      props.actions.registerUser({ userEmail: email, password: password });
+    },
+    [props.action]
+  );
+  const onLogin = useCallback(
+    (email, password) => {
+      props.actions.validateUser({ userEmail: email, password: password });
+    },
+    [props.action]
+  );
+
+  const onChangePass = useCallback(
+    (passcode, password) => {
+      props.actions.changePassword({
+        userEmail: props.forgotEmail,
+        newPassword: password,
+        passcode: passcode,
+      });
+    },
+    [props.action, props.forgotEmail]
+  );
+  const onFP = useCallback(
+    (email) => {
+      props.actions.forgotPassword({ userEmail: email });
+    },
+    [props.action]
+  );
   const onCloseRegister = () => {
     setOpenReg(false);
   };
@@ -55,30 +113,38 @@ const Login = ({ open, handleClose, openLoginSetter }) => {
   };
   return (
     <>
-      <InitialLogin
-        onLogin={onLogin}
-        open={open}
-        handleClose={handleClose}
-        onOpenReg={onOpenReg}
-        TransitionComponent={Transition}
-        onOpenFP={onOpenFP}
-      />
-      <Register
-        open={openReg}
-        handleClose={onCloseRegister}
-        onRegister={onRegister}
-        onOpenLogin={onOpenLogin}
-        onOpenFP={onOpenFP}
-        TransitionComponent={Transition}
-      />
-      <ForgotPass
-        open={openFP}
-        handleClose={onCloseFP}
-        onFP={onFP}
-        onOpenLogin={onOpenLogin}
-        TransitionComponent={Transition}
-        onRegister={onOpenReg}
-      />
+      <>
+        <InitialLogin
+          onLogin={onLogin}
+          open={open}
+          handleClose={handleClose}
+          onOpenReg={onOpenReg}
+          TransitionComponent={Transition}
+          onOpenFP={onOpenFP}
+          loading={props.loading}
+        />
+        <Register
+          open={openReg}
+          handleClose={onCloseRegister}
+          onRegister={onRegister}
+          onOpenLogin={onOpenLogin}
+          onOpenFP={onOpenFP}
+          TransitionComponent={Transition}
+          loading={props.loading}
+        />
+        <ForgotPass
+          open={openFP}
+          handleClose={onCloseFP}
+          onFP={onFP}
+          onOpenLogin={onOpenLogin}
+          TransitionComponent={Transition}
+          onRegister={onOpenReg}
+          loading={props.loading}
+          forgotPasscodeSent={props.forgotPassCode}
+          onChangePassword={onChangePass}
+        />
+        <ShowToast msg={toast.toastMsg} type='error' open={toast.open} />
+      </>
     </>
   );
 };
@@ -89,4 +155,16 @@ Login.propTypes = {
   openLoginSetter: PropTypes.func,
 };
 
-export default Login;
+const mapDispatchtoProps = (dispatch) => ({
+  actions: bindActionCreators({ ...Actions }, dispatch),
+});
+
+const mapStateToProps = (state) => ({
+  data: state.Login.data,
+  loading: state.Login.loading,
+  err: state.Login.error,
+  forgotPassCode: state.Login.forgotPassCode,
+  forgotEmail: state.Login.forgotEmail,
+});
+
+export default connect(mapStateToProps, mapDispatchtoProps)(Login);

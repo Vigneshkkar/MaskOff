@@ -48,6 +48,12 @@
     justify-content: flex-end;
   }
 }
+.loadingFormat {
+  display: flex;
+  height: 20rem;
+  justify-content: center;
+  align-items: center;
+}
 @mixin font {
   color: $primary-color;
   font-weight: bold;
@@ -111,4 +117,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.btnTextSmall {
+  font-size: 17px;
 }

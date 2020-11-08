@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dialog } from '@material-ui/core';
+import { CircularProgress, Dialog } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from './index.module.scss';
 import Card from '../card';
@@ -19,6 +19,7 @@ const Login = ({
   onOpenReg,
   TransitionComponent,
   onOpenFP,
+  loading,
 }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,84 +36,92 @@ const Login = ({
           backgroundColor: '#F0F0F3',
         },
       }}>
-      <div className={styles.imageHolder}>
-        {/* <div> */}
-        <div className={styles.loginContainer}>
-          <span className={styles.Heading}>Login</span>
-          <Card otherStyles={[styles.cardOverride, styles.fillWidth].join(' ')}>
-            <div className={styles.seacrhComp}>
-              <input
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                onKeyUp={(e) => {
-                  setEmail(e.target.value);
-                }}
-                placeholder='Email Address...'
-                className={styles.inputtransparent}></input>
-            </div>
-          </Card>
-          <Card otherStyles={[styles.cardOverride, styles.fillWidth].join(' ')}>
-            <div className={styles.seacrhComp}>
-              <input
-                type='Password'
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                onKeyUp={(e) => {
-                  setPassword(e.target.value);
-                }}
-                placeholder='Password...'
-                className={styles.inputtransparent}></input>
-            </div>
-          </Card>
-          <div
-            className={styles.btnText}
-            onClick={() => {
-              if (!validateEmail(email)) {
-                setToast({
-                  open: true,
-                  toastMsg: 'Enter Vaild Email Address',
-                });
-                setTimeout(() => {
-                  setToast({
-                    open: false,
-                    toastMsg: '',
-                  });
-                }, 2000);
-                return;
-              }
-              if (password.length < 6) {
-                setToast({
-                  open: true,
-                  toastMsg: 'Password should be atleast 5 characters long.',
-                });
-                setTimeout(() => {
-                  setToast({
-                    open: false,
-                    toastMsg: '',
-                  });
-                }, 2000);
-                return;
-              }
-
-              onLogin(email, password);
-            }}>
-            <Card button={true} otherStyles={styles.cardOverride}>
-              <div className={[styles.btnText, styles.btnContent].join(' ')}>
-                Login
+      {!loading ? (
+        <div className={styles.imageHolder}>
+          {/* <div> */}
+          <div className={styles.loginContainer}>
+            <span className={styles.Heading}>Login</span>
+            <Card
+              otherStyles={[styles.cardOverride, styles.fillWidth].join(' ')}>
+              <div className={styles.seacrhComp}>
+                <input
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  onKeyUp={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  placeholder='Email Address...'
+                  className={styles.inputtransparent}></input>
               </div>
             </Card>
+            <Card
+              otherStyles={[styles.cardOverride, styles.fillWidth].join(' ')}>
+              <div className={styles.seacrhComp}>
+                <input
+                  type='Password'
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  onKeyUp={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  placeholder='Password...'
+                  className={styles.inputtransparent}></input>
+              </div>
+            </Card>
+            <div
+              className={styles.btnText}
+              onClick={() => {
+                if (!validateEmail(email)) {
+                  setToast({
+                    open: true,
+                    toastMsg: 'Enter Vaild Email Address',
+                  });
+                  setTimeout(() => {
+                    setToast({
+                      open: false,
+                      toastMsg: '',
+                    });
+                  }, 2000);
+                  return;
+                }
+                if (password.length < 6) {
+                  setToast({
+                    open: true,
+                    toastMsg: 'Password should be atleast 5 characters long.',
+                  });
+                  setTimeout(() => {
+                    setToast({
+                      open: false,
+                      toastMsg: '',
+                    });
+                  }, 2000);
+                  return;
+                }
+
+                onLogin(email, password);
+              }}>
+              <Card button={true} otherStyles={styles.cardOverride}>
+                <div className={[styles.btnText, styles.btnContent].join(' ')}>
+                  Login
+                </div>
+              </Card>
+            </div>
+            <div className={styles.forgotPass}>
+              <span onClick={onOpenReg}>Register /</span>{' '}
+              <span onClick={onOpenFP}>Forgot Password</span>
+            </div>
           </div>
-          <div className={styles.forgotPass}>
-            <span onClick={onOpenReg}>Register /</span>{' '}
-            <span onClick={onOpenFP}>Forgot Password</span>
-          </div>
+          <ShowToast msg={toast.toastMsg} type='error' open={toast.open} />
         </div>
-        <ShowToast msg={toast.toastMsg} type='error' open={toast.open} />
-      </div>
+      ) : (
+        <div className={styles.loadingFormat}>
+          <CircularProgress color='secondary' />
+        </div>
+      )}
     </Dialog>
   );
 };
@@ -124,6 +133,7 @@ Login.propTypes = {
   onOpenReg: PropTypes.func.isRequired,
   TransitionComponent: PropTypes.object,
   onOpenFP: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Login;
