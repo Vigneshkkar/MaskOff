@@ -9,7 +9,7 @@ const {
 export const initialState = {
   data: null,
   selCats: [],
-  selPriceRange: [],
+  selPriceRange: [0, 100],
   loading: false,
   error: null,
 };
@@ -31,7 +31,7 @@ const CategoryReducer = (state = initialState, action) => {
     case UPDATE_SEL_CATS:
       return {
         ...state,
-        selCats: [...state.selCats, action.payload],
+        selCats: [...new Set([...state.selCats, action.payload])],
       };
     case DELETE_SEL_CATS:
       return {

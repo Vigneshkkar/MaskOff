@@ -4,21 +4,21 @@ import styles from './index.module.scss';
 
 const Catagories = ({ cat, onSelect }) => (
   <>
-    <div onClick={() => onSelect(cat.title)} className={styles.Header}>
+    <div onClick={() => onSelect(cat.mainCat)} className={styles.Header}>
       <div className={styles.titileCont}>
-        <img alt='' src={cat.icon} />
-        <span className={styles.HeaderText}>{cat.title}</span>
+        <img alt='' src={cat.image} />
+        <span className={styles.HeaderText}>{cat.mainCat}</span>
       </div>
       {cat.subCat &&
         cat.subCat.map((subCat, j) => (
           <span
             onClick={(e) => {
-              onSelect(`${cat.title}-${subCat.title}`);
+              onSelect(`${cat.mainCat}-${subCat}`);
               e.stopPropagation();
             }}
             key={j}
             className={styles.subCat}>
-            {subCat.title}
+            {subCat}
           </span>
         ))}
     </div>

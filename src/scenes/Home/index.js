@@ -38,6 +38,7 @@ const Home = (props) => {
   const onOpenLogin = () => setOpen(true);
   useEffect(() => {
     props.actions.getProductDetails();
+    props.actions.getPriceDetails();
   }, []);
   useEffect(() => {
     props.actions.getCategoryDetails();

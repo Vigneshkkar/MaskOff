@@ -21,6 +21,7 @@ const SideContent = (props) => {
       onChangePrice={onPriceRange}
       cats={props.data}
       loading={props.loading}
+      priceRange={props.selPriceRange}
     />
   );
 };

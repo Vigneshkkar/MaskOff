@@ -5,10 +5,15 @@ const {
   GET_CATEGORY,
   UPDATE_SEL_CATS,
   DELETE_SEL_CATS,
+  GET_PRICE_RANGE,
   UPDATE_PRICE_RANGE,
 } = keys;
 export const getCategoryDetails = () => ({
   type: GET_CATEGORY,
+});
+
+export const getPriceDetails = () => ({
+  type: GET_PRICE_RANGE,
 });
 
 export const fetchSuccess = (data) => ({
