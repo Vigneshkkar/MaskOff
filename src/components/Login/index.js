@@ -91,6 +91,7 @@ const Login = (props) => {
     setFP(false);
   };
   const onOpenReg = () => {
+    props.actions.resetLogin();
     handleClose();
     onCloseFP();
     setTimeout(() => {
@@ -98,6 +99,7 @@ const Login = (props) => {
     }, 300);
   };
   const onOpenFP = () => {
+    props.actions.resetLogin();
     handleClose();
     onCloseRegister();
     setTimeout(() => {
@@ -105,6 +107,7 @@ const Login = (props) => {
     }, 300);
   };
   const onOpenLogin = () => {
+    props.actions.resetLogin();
     onCloseRegister();
     onCloseFP();
     setTimeout(() => {

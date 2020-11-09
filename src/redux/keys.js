@@ -30,6 +30,6 @@ export const keys = keyMirror({
   VALIDATE_ERR: null,
   FORGOT_SEND_CODE: null,
   FORGOT_SEND_SUCC: null,
-  VERIFY_CODE: null,
+  RESET_LOGIN: null,
   CHANGE_PASSWORD: null,
 });

@@ -8,6 +8,7 @@ const {
   FORGOT_SEND_CODE,
   FORGOT_SEND_SUCC,
   CHANGE_PASSWORD,
+  RESET_LOGIN,
 } = keys;
 export const registerUser = (data) => ({
   type: REGISTER_USER,
@@ -41,4 +42,8 @@ export const forgotPasswordSucc = (data) => ({
 export const changePassword = (data) => ({
   type: CHANGE_PASSWORD,
   payload: data,
+});
+
+export const resetLogin = () => ({
+  type: RESET_LOGIN,
 });

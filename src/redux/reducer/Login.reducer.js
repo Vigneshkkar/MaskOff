@@ -7,7 +7,7 @@ const {
   VALIDATE_USER,
   FORGOT_SEND_CODE,
   FORGOT_SEND_SUCC,
-  VERIFY_CODE,
+  RESET_LOGIN,
   CHANGE_PASSWORD,
 } = keys;
 export const initialState = {
@@ -23,16 +23,19 @@ const CartReducer = (state = initialState, action) => {
     case REGISTER_USER:
       return {
         ...state,
+        error: null,
         loading: true,
       };
     case FORGOT_SEND_CODE:
       return {
         ...state,
+        error: null,
         loading: true,
       };
     case VALIDATE_USER:
       return {
         ...state,
+        error: null,
         loading: true,
       };
     case REGISTER_SUCC:
@@ -56,6 +59,7 @@ const CartReducer = (state = initialState, action) => {
     case CHANGE_PASSWORD:
       return {
         ...state,
+        error: null,
         loading: true,
       };
     case REGISTER_ERR:
@@ -66,7 +70,15 @@ const CartReducer = (state = initialState, action) => {
         data: null,
         error: action.payload,
       };
-
+    case RESET_LOGIN:
+      return {
+        ...state,
+        loading: false,
+        data: null,
+        error: null,
+        forgotPassCode: false,
+        forgotEmail: null,
+      };
     default:
       return state;
   }
