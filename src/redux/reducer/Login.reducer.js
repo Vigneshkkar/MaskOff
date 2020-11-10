@@ -1,4 +1,3 @@
-import { act } from 'react-dom/test-utils';
 import { keys } from '../keys';
 const {
   REGISTER_USER,
@@ -63,7 +62,6 @@ const CartReducer = (state = initialState, action) => {
         loading: true,
       };
     case REGISTER_ERR:
-      console.log(state);
       return {
         ...state,
         loading: false,

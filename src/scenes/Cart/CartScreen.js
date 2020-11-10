@@ -55,7 +55,7 @@ const CartScreen = ({
         )}
       </div>
       <div className={styles.proceedCheckout}>
-        <div>
+        {/* <div>
           <span>Address to Deliver</span>
           <TextField
             label='Enter Delivery Address...'
@@ -68,7 +68,7 @@ const CartScreen = ({
             error={false}
             helperText={false && 'Please Enter Address to proceed.'}
             variant='filled'></TextField>
-        </div>
+        </div> */}
         <div className={styles.proceedCheck}>
           <div>
             <span>Total</span>

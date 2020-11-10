@@ -32,4 +32,14 @@ export const keys = keyMirror({
   FORGOT_SEND_SUCC: null,
   RESET_LOGIN: null,
   CHANGE_PASSWORD: null,
+
+  REQUEST_PAYMENT: null,
+  PAYMENT_SUCCESS: null,
+  PAYMENT_ERROR: null,
+
+  CREATE_ORDER: null,
+  ORDER_SUCC: null,
+  ORDER_FAIL: null,
+  SHOW_LOADING: null,
+  HIDE_LOADING: null,
 });

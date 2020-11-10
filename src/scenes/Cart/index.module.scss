@@ -14,7 +14,7 @@
   @include custromScrollBar();
   padding: 2rem;
   margin-bottom: 10rem;
-  height: calc(100vh - 65px - 35px - 15rem - 9rem);
+  height: calc(100vh - 65px - 35px - 10rem - 9rem);
   overflow: auto;
 }
 @mixin fonts {
@@ -33,11 +33,11 @@
   }
 }
 .proceedCheckout {
-  height: 15rem;
+  height: 10rem;
   background-color: #556e53;
-  width: 50%;
+  width: 25%;
   border-radius: 10px;
-  margin-left: 25%;
+  margin-left: 37%;
   display: flex;
   justify-content: space-between;
   bottom: 0px;

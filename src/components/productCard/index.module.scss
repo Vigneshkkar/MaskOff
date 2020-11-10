@@ -4,7 +4,7 @@
   width: 300px;
   // position: relative;
 
-  @include AnimationDurations(1s);
+  @include AnimationDurations(0.5s);
   &:hover {
     width: 450px;
     .cardPicker {
@@ -45,7 +45,7 @@
   right: 1rem;
 }
 .cardPicker {
-  @include AnimationDurations(1s);
+  @include AnimationDurations(0.5s);
   transition-delay: 0.5s;
   height: 60px;
   display: flex;
@@ -75,7 +75,7 @@
   font-weight: bold;
 }
 .addCartCont {
-  @include AnimationDurations(1s);
+  @include AnimationDurations(0.5s);
   width: 100%;
   display: flex;
   justify-content: space-evenly;

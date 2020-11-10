@@ -1,0 +1,86 @@
+@import '../../styles/theme.scss';
+
+.Container {
+  width: 50%;
+}
+.containerWhole {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+.cardCont {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+.cardOverride {
+  background-color: $light-backGround;
+}
+.paymentHeadings {
+  font-size: $catSubFont;
+  color: $textColor;
+  margin: 1rem;
+  margin-left: 0px;
+}
+.orSeperator {
+  font-size: $catSubFont;
+  color: $textSutle;
+  margin: 1rem;
+  justify-content: center;
+  display: flex;
+}
+
+.inputtransparent {
+  background: none;
+  border: none;
+  margin: 0.5rem;
+  color: $textColor;
+  width: -webkit-fill-available;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: $textSutle;
+  }
+}
+
+.inputComp {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+.detaisCont {
+  // width: 50%;
+}
+.cardElement {
+  margin-bottom: 1rem;
+}
+.cardName {
+  padding: 0.5rem;
+}
+
+.ButtonCont {
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  transform: scale(1);
+  span {
+    color: $textColor;
+    font-size: $catSubFont;
+    padding-left: 0.5rem;
+  }
+}
+.cardContainer {
+  @include AnimationDurations(0.5s);
+  background-color: $light-green;
+  width: fit-content;
+  &:hover {
+    transform: scale(1.25);
+  }
+}

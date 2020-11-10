@@ -26,24 +26,22 @@ const Cart = (props) => {
   const onClose = () => setOpenLogin(false);
   const onOpenLogin = () => setOpenLogin(true);
 
-  const onCheckOpenLogin = (address) => {
-    if (!address) {
+  const onCheckOpenLogin = () => {
+    if (props.count <= 0 || props.totalAmount <= 0) {
       setOpen({
         visible: true,
-        msg: 'Please add Address to Proceed Further.',
+        msg: 'Please add products to cart to place order.',
         type: 'error',
       });
       setTimeout(() => {
         setOpen({ visible: false, msg: undefined, type: undefined });
-      }, 2000);
+      }, 2500);
       return;
     }
-    // if (!cookies.getLoggedInStatus) {
-    //   onOpenLogin();
-    //   return;
-    // }
-    history.push('/Home/OrderConfirmation/success');
-    onOpenLogin();
+    history.push('/Home/Payment');
+    // handleCheckout();
+    // history.push('/Home/OrderConfirmation/success');
+    // onOpenLogin();
   };
 
   const onChangeCount = useCallback(

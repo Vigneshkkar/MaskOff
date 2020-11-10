@@ -16,9 +16,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
 });
 
-const onFP = (email, password) => {
-  console.log(email, password);
-};
 const openToast = (setToast, msg) => {
   setToast({
     open: true,
@@ -34,8 +31,6 @@ const openToast = (setToast, msg) => {
 
 const Login = (props) => {
   const [cookies, setCookie] = useCookies();
-
-  console.log(props);
   const { open, handleClose, openLoginSetter } = props;
   const [openReg, setOpenReg] = useState(false);
   const [openFP, setFP] = useState(false);
@@ -57,13 +52,16 @@ const Login = (props) => {
 
   const onRegister = useCallback(
     (email, password) => {
-      props.actions.registerUser({ userEmail: email, password: password });
+      props.actions.registerUser({ userEmail: email, data: btoa(password) });
     },
     [props.action]
   );
   const onLogin = useCallback(
     (email, password) => {
-      props.actions.validateUser({ userEmail: email, password: password });
+      props.actions.validateUser({
+        userEmail: email,
+        data: btoa(password),
+      });
     },
     [props.action]
   );
@@ -72,7 +70,7 @@ const Login = (props) => {
     (passcode, password) => {
       props.actions.changePassword({
         userEmail: props.forgotEmail,
-        newPassword: password,
+        newdata: btoa(password),
         passcode: passcode,
       });
     },

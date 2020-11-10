@@ -1,10 +1,18 @@
 import { keys } from '../keys';
-const { ADD_CART, DELETE_CART, RESET_CART } = keys;
+const {
+  ADD_CART,
+  DELETE_CART,
+  RESET_CART,
+  REQUEST_PAYMENT,
+  PAYMENT_SUCCESS,
+  PAYMENT_ERROR,
+} = keys;
 export const initialState = {
   data: null,
   selCart: [],
   loading: false,
   error: null,
+  paymentDetails: null,
 };
 
 const CartReducer = (state = initialState, action) => {

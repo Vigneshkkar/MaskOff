@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import MainContentScreen from './MainContentScreen';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

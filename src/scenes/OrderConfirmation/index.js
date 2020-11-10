@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import OrderScreen from './OrderScreen';
 
-const Order = (props) => {
+const Order = () => {
   let { status } = useParams();
   let history = useHistory();
 

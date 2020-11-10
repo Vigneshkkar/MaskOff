@@ -36,3 +36,9 @@ export const clearAllCookies = (removeCookie) => {
     removeCookie(o);
   });
 };
+
+export const clearCart = (removeCookie) => {
+  ['Cart'].map((o) => {
+    removeCookie(o);
+  });
+};

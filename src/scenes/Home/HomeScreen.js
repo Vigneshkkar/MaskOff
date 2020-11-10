@@ -22,7 +22,6 @@ const HomeScreen = ({ cartValue, onNavigate, open, onClose, onOpenLogin }) => {
   const history = useHistory();
   const onLogOut = () => {
     clearAllCookies(removeCookies);
-    console.log(cookies);
     history.push('/');
   };
 

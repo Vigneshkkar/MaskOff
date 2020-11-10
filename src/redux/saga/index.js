@@ -2,6 +2,7 @@ import { all, fork } from 'redux-saga/effects';
 
 import { fetchCategory, fetchPriceRange } from './category.saga';
 import { fetchProducts } from './products.saga';
+import { fetchPaymentDetails, createOrder } from './payment.saga';
 
 import {
   registerUser,
@@ -19,5 +20,7 @@ export default function* root() {
     fork(validateUser),
     fork(forgotPassword),
     fork(changePassword),
+    fork(fetchPaymentDetails),
+    fork(createOrder),
   ]);
 }

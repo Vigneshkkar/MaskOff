@@ -1,6 +1,7 @@
 import HomePage from '../HomePage';
 import Cart from '../Cart';
 import Order from '../OrderConfirmation';
+import Payment from '../Payment';
 
 const routes = [
   {
@@ -15,6 +16,10 @@ const routes = [
   {
     path: '/Home/OrderConfirmation/:status',
     component: Order,
+  },
+  {
+    path: '/Home/Payment',
+    component: Payment,
   },
 ];
 
