@@ -44,7 +44,7 @@ const Register = ({
               otherStyles={[styles.cardOverride, styles.fillWidth].join(' ')}>
               <div className={styles.seacrhComp}>
                 <input
-                  value={email || 'vigneshkkar@gmail.com'}
+                  value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
