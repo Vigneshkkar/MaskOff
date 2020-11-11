@@ -17,9 +17,7 @@ import * as CartActions from '../../redux/actions/Cart.actions';
 import { useHistory } from 'react-router-dom';
 import ShowToast from '../../components/Toast';
 
-const stripePromise = loadStripe(
-  'pk_test_51HkEHuD8I6te4OUJPkmMfqidVVnpX1APVw61oFcqvJQx02q8PZ6u2pfgX6ddBDObhxTswvIJKBYD4RuuyZp8p71c00FEjHvG2l'
-);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_CODE);
 const openToast = (setToast, msg) => {
   setToast({
     open: true,
