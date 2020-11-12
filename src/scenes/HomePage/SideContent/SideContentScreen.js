@@ -13,7 +13,7 @@ const SideContentScreen = ({
   onChangePrice,
   priceRange,
 }) => {
-  const [value, setValue] = useState([20, 40]);
+  const [value, setValue] = useState([0, 999]);
   return (
     <div className={styles.holder}>
       <Card inset={true}>
@@ -42,7 +42,7 @@ const SideContentScreen = ({
                   onChangePrice(i);
                 }}
                 min={10}
-                max={1000}
+                max={999}
                 valueLabelDisplay='auto'
                 valueLabelFormat={(x) => '$ ' + x}
               />
