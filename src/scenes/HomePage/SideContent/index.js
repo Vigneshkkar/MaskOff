@@ -7,9 +7,13 @@ import * as CategoryActions from '../../../redux/actions/Category.actions';
 const SideContent = (props) => {
   // console.log(props);
 
-  const onCatSel = useCallback((value) => props.actions.updateSelCats(value), [
-    props.actions,
-  ]);
+  const onCatSel = useCallback(
+    (value) => {
+      if (props.closeDrawer) props.closeDrawer();
+      props.actions.updateSelCats(value);
+    },
+    [props.actions]
+  );
 
   const onPriceRange = useCallback(
     (value) => props.actions.updatePrice(value),

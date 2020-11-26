@@ -62,3 +62,11 @@
 .loggedinAs {
   color: $textSutle;
 }
+.globalContbottomNav {
+  position: fixed;
+  bottom: 0px;
+  z-index: 999;
+}
+.mobileCont {
+  padding-bottom: 60px;
+}

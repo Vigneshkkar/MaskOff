@@ -5,11 +5,17 @@ import Success from '../../assets/LoginImages/OrderSuccessful.png';
 import Fail from '../../assets/LoginImages/OrderFailed.png';
 import Card from '../../components/card';
 import CannabisLeaf from '../../assets/icons/Weed.svg';
+
+import { isMobile } from 'react-device-detect';
 const OrderScreen = ({ success, onNavigate }) => {
   return (
     <>
       <div className={styles.imageHolder}>
-        <img src={success ? Success : Fail} alt='' />
+        <img
+          className={isMobile ? styles.imgMob : ''}
+          src={success ? Success : Fail}
+          alt=''
+        />
       </div>
       <div className={styles.msgText}>
         {success ? (

@@ -9,6 +9,12 @@ import ShoppingBasketRoundedIcon from '@material-ui/icons/ShoppingBasketRounded'
 import Skeleton from '@material-ui/lab/Skeleton';
 import Toast from '../../components/Toast';
 import Login from '../../components/Login';
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile,
+} from 'react-device-detect';
 
 const CartScreen = ({
   data,
@@ -54,7 +60,11 @@ const CartScreen = ({
           </div>
         )}
       </div>
-      <div className={styles.proceedCheckout}>
+      <div
+        className={[
+          styles.proceedCheckout,
+          isMobile ? styles.mobileCheckout : '',
+        ].join(' ')}>
         {/* <div>
           <span>Address to Deliver</span>
           <TextField
@@ -69,7 +79,7 @@ const CartScreen = ({
             helperText={false && 'Please Enter Address to proceed.'}
             variant='filled'></TextField>
         </div> */}
-        <div className={styles.proceedCheck}>
+        <div className={[styles.proceedCheck].join(' ')}>
           <div>
             <span>Total</span>
             <span>$ {totalAmount}</span>

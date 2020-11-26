@@ -5,7 +5,10 @@
   justify-content: center;
   height: fit-content;
   padding-top: 1rem;
-  height: 75vh;
+  // height: 75vh;
+  img {
+    width: 50%;
+  }
 }
 .msgText {
   width: 100%;
@@ -31,4 +34,7 @@
   display: flex;
   justify-content: center;
   padding-top: 1.5rem;
+}
+.imgMob {
+  width: 90%;
 }

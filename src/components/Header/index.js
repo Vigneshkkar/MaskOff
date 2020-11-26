@@ -44,7 +44,7 @@ const Header = ({ onSearch, onSort }) => {
           </div>
         </Card>
       </Grid>
-      <Grid item xs={4} md={3}>
+      <Grid item xs={6} md={3}>
         <Card>
           <FormControl fullWidth={true}>
             <StyledSelect
