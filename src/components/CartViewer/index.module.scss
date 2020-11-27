@@ -7,6 +7,10 @@
   justify-content: space-around;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+  img {
+    max-width: 168px;
+    max-height: 168px;
+  }
 }
 @mixin fonts {
   font-size: $cardHeading;
