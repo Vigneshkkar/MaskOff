@@ -84,3 +84,15 @@
     transform: scale(1.25);
   }
 }
+
+.interacImg {
+  width: 26px;
+  height: 26px;
+}
+
+.interacCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

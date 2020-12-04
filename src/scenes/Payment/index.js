@@ -123,6 +123,31 @@ const Payment = (props) => {
       });
   };
 
+  const sendInteracPayment = () => {
+    if (
+      !address.email ||
+      !address.name ||
+      !address.addressLine ||
+      !address.zipCode ||
+      !address.phonenumber
+    ) {
+      openToast(setToast, 'Please enter Shipping details to confirm.');
+      return;
+    }
+    props.actions.showLoding();
+    props.actions.createOrder({
+      ...address,
+      totalItems: props.count,
+      totalValue: props.totalAmount,
+      products: props.productData.map((o) => {
+        delete o.img;
+        return o;
+      }),
+      paymentId: null,
+      paymentMethod: 'interac',
+    });
+  };
+
   const confirmGPay = (data, dats, complete, stripe) => {
     const payload = {
       email: dats.payerEmail,
@@ -182,6 +207,7 @@ const Payment = (props) => {
           setAddress={setAddress}
           paymentProcessing={props.paymentProcessing}
           confirmGPay={confirmGPay}
+          interacPayment={sendInteracPayment}
         />
         <ShowToast msg={toast.toastMsg} type='error' open={toast.open} />
       </Elements>

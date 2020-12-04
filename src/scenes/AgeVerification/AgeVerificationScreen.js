@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './index.scss';
 
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/logoName.svg';
+// import LogoName from '../../assets/logoName.svg';
 import Leaf from '../../assets/cannbisLeaf.svg';
 import Card from '../../components/card';
 
@@ -20,6 +21,7 @@ const AgeVerification = ({ onCancel, onConfirm }) => {
       <div className='container'>
         <Card circle={true}>
           <img alt='' className='logosize' src={Logo} />
+          {/* <img alt='' className='logoName' src={LogoName} /> */}
         </Card>
         <span className='title'>Age Verification</span>
         <div>

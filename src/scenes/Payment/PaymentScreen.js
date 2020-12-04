@@ -8,6 +8,7 @@ import PaymentRoundedIcon from '@material-ui/icons/PaymentRounded';
 import Card from '../../components/card';
 import { CircularProgress } from '@material-ui/core';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import InteracPayment from './EInteract';
 
 const PaymentScreen = ({
   total,
@@ -18,6 +19,7 @@ const PaymentScreen = ({
   setAddress,
   paymentProcessing,
   confirmGPay,
+  interacPayment,
 }) => {
   const elements = useElements();
   const stripe = useStripe();
@@ -57,6 +59,10 @@ const PaymentScreen = ({
                 </div>
               </Card>
             </div>
+            <InteracPayment
+              interacPayments={interacPayment}
+              paymentProcessing={paymentProcessing}
+            />
           </>
         ) : (
           <CircularProgress color='secondary' />
@@ -74,5 +80,6 @@ PaymentScreen.propTypes = {
   setAddress: PropTypes.func.isRequired,
   paymentProcessing: PropTypes.bool,
   confirmGPay: PropTypes.func.isRequired,
+  interacPayment: PropTypes.func.isRequired,
 };
 export default PaymentScreen;

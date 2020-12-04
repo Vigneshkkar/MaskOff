@@ -1,4 +1,4 @@
-@import "../../styles/theme.scss";
+@import '../../styles/theme.scss';
 
 .logosize {
   width: 10rem;
@@ -37,7 +37,7 @@
   border: none;
   height: 4rem;
   width: 8rem;
-  font-family: "Baloo Thambi 2";
+  font-family: 'Baloo Thambi 2';
   font-weight: normal;
   font-size: 40px;
   line-height: 61px;
@@ -68,4 +68,6 @@
   top: 0;
   left: 0;
   z-index: -1;
+}
+.logoName {
 }
