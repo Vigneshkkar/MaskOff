@@ -9,7 +9,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  // height: 80vh;
+  overflow: auto;
 }
 .cardCont {
   padding: 1rem;

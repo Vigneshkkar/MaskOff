@@ -59,10 +59,12 @@ const PaymentScreen = ({
                 </div>
               </Card>
             </div>
-            <InteracPayment
-              interacPayments={interacPayment}
-              paymentProcessing={paymentProcessing}
-            />
+            <div className={styles.Container}>
+              <InteracPayment
+                interacPayments={interacPayment}
+                paymentProcessing={paymentProcessing}
+              />
+            </div>
           </>
         ) : (
           <CircularProgress color='secondary' />
