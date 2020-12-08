@@ -24,7 +24,7 @@ const InteracPayment = ({ paymentProcessing, interacPayments }) => {
       <div className={styles.interacCont}>
         <div className={styles.orSeperator}> or </div>
         <div className={styles.paymentHeadings}>
-          Pay through eInterac on <b> maskoff416@gmail.com </b> and click on the
+          Pay through eInterac on <b> mask416off@gmail.com </b> and click on the
           button below to confirm payment.
         </div>
         <div
@@ -47,8 +47,8 @@ const InteracPayment = ({ paymentProcessing, interacPayments }) => {
         <DialogTitle>Confirm Payment</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Is the Payment to <b> maskoff416@gmail.com </b> successful, Please
-            confirm to proceed. I would take some time to process your order.
+            Is the Payment to <b> mask416off@gmail.com </b> successful, Please
+            confirm to proceed. It would take some time to process your order.
           </DialogContentText>
           <DialogActions>
             <Button
